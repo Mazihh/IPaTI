@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup] = "loginFormGroup" (ngSubmit) ="onSubmit()">
+        <ion-item>
+          <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="password" type="password" placeholder ="Password"></ion-input>
+        </ion-item>
+        <ion-item class='form-text error' *ngIf="typeError">
+          <ion-label no-margin stacked style="color: red;"> * Wrong Password or Username!</ion-label>
+        </ion-item>
+        <ion-button type="submit"  [disabled]="loginFormGroup.invalid" margin-top expand="full">Login</ion-button>
+  
+      </form>
+      <ion-label class="register-label" color="primary" [routerLink]="['/register']">
+        Register Here!
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-label id="checkEmailLabel" no-margin stacked style="color: red; display: none;"> Please check your email Verify Your Email!</ion-label>
+
+</ion-content>

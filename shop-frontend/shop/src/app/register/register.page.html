@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup] = "registerFormGroup" (ngSubmit) ="onSubmit()">
+        <ion-item>
+          <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input formControlName="password" type="password" placeholder ="Password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input formControlName="confirm_password" type="password" placeholder ="Confirm Password"></ion-input>
+        </ion-item>
+  
+        <ion-item class='form-text error' *ngIf="registerFormGroup.controls.confirm_password.value != registerFormGroup.controls.password.value">
+          <ion-label no-margin stacked style="color: red;"> *Passwords do not match</ion-label>
+        </ion-item>
+
+        <ion-button type="submit" [disabled]="registerFormGroup.invalid || registerFormGroup.controls.confirm_password.value != registerFormGroup.controls.password.value" margin-top expand="full">Register</ion-button>
+  
+      </form>
+
+      <ion-label class="login-label" color="primary" [routerLink]="['/login']">
+        Login!
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

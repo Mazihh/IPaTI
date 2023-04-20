@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon  size="large" (click)="backToHome()" name="arrow-back-outline"></ion-icon>
+    <ion-title>delete_product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <ion-card>
+    <ion-card-content>
+  <form [formGroup] = "deleteProductForm" (ngSubmit) ="onSubmit()">
+    <ion-item>
+      <ion-input formControlName="id" type="text" placeholder="Pass ID"></ion-input>
+    </ion-item>
+    <ion-button type="submit"  [disabled]="deleteProductForm.invalid" margin-top expand="full">Delete Product</ion-button>
+  </form>
+</ion-card-content>
+</ion-card>
+
+</ion-content>

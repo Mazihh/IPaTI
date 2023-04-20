@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon slot="start" size="large" name="menu-outline" (click)="openMainMenu()"></ion-icon>
+    <ion-title>
+      Shop
+    <ion-text  style="font-size: small;">
+      Total
+    </ion-text>
+
+
+    <ion-chip>
+      <ion-label color="danger">{{totalAmount}}$</ion-label>
+    </ion-chip>
+
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="!list_products">
+    <ion-card>
+          <ion-skeleton-text class="skeleton-image" animated></ion-skeleton-text>
+          <ion-card-header>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card-header>
+    </ion-card> 
+
+    <ion-card>
+        <ion-skeleton-text class="skeleton-image" animated></ion-skeleton-text>
+        <ion-card-header>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-card-header>
+    </ion-card> 
+
+    <ion-card>
+        <ion-skeleton-text class="skeleton-image" animated></ion-skeleton-text>
+        <ion-card-header>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-card-header>
+    </ion-card> 
+  </div>
+
+
+  <ion-card  [routerLink]="['details',product.price,product.description,product.title,product.imageUrl]" button *ngFor="let product of list_products | async">
+    <ion-img [src]="product?.imageUrl"></ion-img>
+    <ion-card-header>
+       <ion-card-title style="text-align: center;">
+      {{product?.title}} 
+      
+      <ion-chip>
+        <ion-label color="danger">{{product?.price}}$</ion-label>
+      </ion-chip>
+      
+       </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  
+</ion-content>
